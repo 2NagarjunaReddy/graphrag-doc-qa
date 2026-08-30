@@ -1,0 +1,5 @@
+Neo4j is a graph database that stores data as nodes and relationships instead of rows and tables. Engineers use Neo4j to model entities such as people, products, and documents, along with the connections between them. The query language Cypher lets a developer traverse those connections directly, which makes multi-hop questions like "which documents mention the same vendor" fast to answer compared to joining many relational tables.
+
+In a retrieval system, Neo4j commonly stores the entities and relationships extracted from a document corpus. A pipeline reads raw text, pulls out named entities, and writes edges between entities that co-occur or that share a verb relationship in a sentence. Once the graph exists, a query can start from an entity mentioned in a user's question and walk outward to find related chunks that a pure similarity search might miss.
+
+Neo4j pairs well with a vector database. The vector database finds chunks that are semantically close to a query, while the graph finds chunks that are structurally connected to the same entities. Combining both signals is the core idea behind GraphRAG.

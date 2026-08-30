@@ -1,0 +1,5 @@
+Milvus is a vector database built to store and search high-dimensional embeddings at scale. A typical workflow encodes text chunks into vectors with an embedding model, inserts those vectors into a Milvus collection, and later searches the collection for the vectors closest to a query embedding using cosine similarity or another distance metric.
+
+Milvus is commonly used as the retrieval layer behind a RAG system. When a user asks a question, the system embeds the question with the same model used to embed the documents, searches Milvus for the nearest chunks, and passes those chunks to a language model as context. Because Milvus indexes vectors rather than keywords, it can match a query to a chunk even when they do not share the same wording, which is the main advantage over classic keyword search.
+
+Milvus scales by sharding collections across nodes and building approximate nearest-neighbor indexes such as IVF or HNSW, which trade a small amount of recall for a large gain in query speed on large collections.

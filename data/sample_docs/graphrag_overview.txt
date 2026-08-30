@@ -1,0 +1,5 @@
+GraphRAG extends retrieval-augmented generation by adding a knowledge graph alongside the usual vector index. Plain RAG retrieves chunks that are semantically similar to a query. GraphRAG additionally retrieves chunks that are structurally related through shared entities, even when those chunks use different wording than the query.
+
+A common GraphRAG pipeline has four stages. First, ingest documents and split them into chunks. Second, run named entity recognition and relation extraction on each chunk to populate a graph, typically stored in Neo4j. Third, embed each chunk and store the embedding in a vector database such as Milvus. Fourth, at query time, run a vector search for direct hits, extract entities from the query, walk the graph from those entities to find related chunks, and merge both result sets before generating an answer.
+
+The benefit shows up on multi-hop questions, where the answer depends on connecting facts that appear in different chunks. A pure vector search over each chunk in isolation can miss that connection, while a graph walk surfaces it directly.
