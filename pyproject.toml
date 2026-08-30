@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graphrag-doc-qa"
+version = "0.1.0"
+description = "GraphRAG pipeline: document ingestion, entity/relation extraction, graph + vector retrieval"
+requires-python = ">=3.10"
+dependencies = [
+    "sentence-transformers>=3.0",
+    "spacy>=3.7",
+    "networkx>=3.2",
+    "pypdf>=4.0",
+    "numpy>=1.26",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
